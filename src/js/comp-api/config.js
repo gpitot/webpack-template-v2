@@ -26,7 +26,7 @@ const endpoints = {
         {
             name : 'firstName',
             value : '',
-            type : 'text'
+            type : 'text',
         },
         {
             name : 'email',
