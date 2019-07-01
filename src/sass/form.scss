@@ -1,0 +1,23 @@
+
+
+
+.comp-form {
+    width:600px;
+    margin:auto;
+    display:flex;
+    flex-flow:row wrap;
+
+    input[type=text], input[type=email] {
+        width:400px;
+        max-width:calc(50% - 50px);
+        margin:10px 25px;
+    }
+
+    input[type=number] {
+        margin:10px 25px;
+    }
+
+    input[type=submit] {
+        
+    }
+}
