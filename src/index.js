@@ -1,6 +1,6 @@
 import style from "./sass/index.scss";
 
-import renderForm from './js/comp-api';
+import CompApi from './js/comp-api';
 
 
-renderForm(document.getElementById('parent'));
+new CompApi(document.getElementById('parent'))

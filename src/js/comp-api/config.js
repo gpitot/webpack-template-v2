@@ -24,21 +24,43 @@ const endpoints = {
 
     formConfig : [
         {
+            label : 'First name',
             name : 'firstName',
             value : '',
             type : 'text',
         },
         {
+            label : 'Last name',
+            name : 'lastName',
+            value : '',
+            type : 'text'
+        },
+        {
+            label : 'Email',
             name : 'email',
             value : '',
             type : 'email'
         },
         {
+            label : 'Phone Number',
+            name : 'phone',
+            value : '',
+            type : 'number'
+        },
+        {
+            label : 'State',
+            name : 'state',
+            value : '',
+            type : 'text'
+        },
+        {
+            label : 'Postcode',
             name : 'postcode',
             value : '',
             type : 'number'
         },
         {
+            label : 'Newsletter',
             name : 'newsletter',
             value : '',
             type : 'checkbox'
