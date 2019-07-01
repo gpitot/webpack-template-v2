@@ -1,31 +1,43 @@
 .comp-form {
     // width: 600px;
-    margin: 40px 0;
+    margin: 40px 20px;
     display: flex;
     flex-flow: row wrap;
 
-    input[type=text],
-    input[type=email] {
-        width: 150px;
-        max-width: calc(50% - 50px);
-        margin: 0px 25px;
+    input {
+        background: none;
         border: 0;
-        border-bottom: 1px solid #000;
+        border-bottom: 1px solid #dedede;
+        width: 100%;
+        padding: 8px 0;
+        font-size: 14px;
     }
 
-    input[type=number] {
-        margin: 10px 25px;
-    }
-
-    input[type=submit] {
+    input[type=text] {
 
     }
+
+
+    // input[type=number] {
+    //     margin: 10px 25px;
+    // }
+
+    input[type=submit] {}
+
+    // input, label {
+    //     display: block;
+    // }
 
     input:focus,
     select:focus,
     textarea:focus,
     button:focus {
-        outline: none; 
+        outline: none;
+    }
+
+    label {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px; 
     }
 
 }
@@ -81,7 +93,7 @@ img.logo.logo__right {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 60px;
     line-height: 60px;
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .block__left--subheading {
@@ -133,7 +145,7 @@ img.logo.logo__right {
 }
 
 .block__right--container-disclaimer p {
-    color: #fff;
+    color: #eeeeee;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     line-height: 16px;
