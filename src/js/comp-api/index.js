@@ -121,13 +121,28 @@ class CompApi {
         form.classList.add('comp-form');
     
         const fields = {};
-    
-        endpoints.formConfig.forEach(({name, value, type}) => {
+
+
+        const createInput = ({name, value, type}) => {
             const input = document.createElement('input');
             input.name = name;
             input.type = type;
             input.value = value;
-            form.appendChild(input);
+            return input;
+        }
+
+        const createLabel = ({label}) => {
+            const labelEl = document.createElement('label');
+            labelEl.innerText = label;
+            return labelEl;
+        }
+
+    
+        endpoints.formConfig.forEach(({label, name, value, type}) => {
+
+
+            form.appendChild(createLabel({label}));
+            form.appendChild(createInput({name, value, type}));
     
             fields[name] = value;
         });
