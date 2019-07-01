@@ -137,12 +137,20 @@ class CompApi {
             return labelEl;
         }
 
+        const createParent = ({label, name, value, type}) => {
+            const parent = document.createElement('div');
+            parent.classList.add('form-item');
+
+            parent.appendChild(createLabel({label}));
+            parent.appendChild(createInput({name, value, type}));
+            form.appendChild(parent);
+        }
+
     
         endpoints.formConfig.forEach(({label, name, value, type}) => {
 
 
-            form.appendChild(createLabel({label}));
-            form.appendChild(createInput({name, value, type}));
+            createParent({label, name, value, type});
     
             fields[name] = value;
         });
