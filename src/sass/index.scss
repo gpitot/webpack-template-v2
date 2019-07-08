@@ -8,6 +8,7 @@ body {
     box-sizing: border-box;
 }
 
+
 .root {
     margin: 0px auto;
     width: 100%;
@@ -39,6 +40,7 @@ body {
         width: 50%;
         background: url('../img/leftPanel.jpg') no-repeat;
         background-size: cover;
+        background-position: right;
         display: flex;
 
         .block__left--heading h2 {
@@ -122,6 +124,12 @@ body {
             width: 100%;
             height: auto;
             background: #fff;
+
+            @media (max-width:500px) {
+                margin-top:15px;
+            }
+
+            
         }
 
         .block__right--disclaimer {

@@ -4,9 +4,21 @@
     display: flex;
     flex-flow: row wrap;
 
+
+    .error {
+        width: 100%;
+        color: red;
+        padding-bottom: 15px;
+    }
+
+    .optin-row {
+        justify-content: flex-end;
+    }
+
     .form-item {
-        width: 50%;
+        width: calc(50% - 10px);
         margin-bottom: 10px;
+        margin:5px;
     }
 
     .form-item:nth-of-type(7),
@@ -30,7 +42,7 @@
         background: none;
         border: 0;
         border-bottom: 1px solid #000;
-        width: 90%;
+        width: 100%;
         padding: 3px 0;
         font-size: 14px;
     }
