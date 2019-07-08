@@ -8,7 +8,6 @@ body {
     box-sizing: border-box;
 }
 
-
 .root {
     margin: 0px auto;
     width: 100%;
@@ -91,7 +90,7 @@ body {
         margin: 55px 0 0 0;
     }
 
-    .block__right {
+    .block__right, .block__right--thankyou {
         width: 50%;
         position: relative;
         background: #eeeeee;
@@ -125,10 +124,9 @@ body {
             height: auto;
             background: #fff;
 
-            @media (max-width:500px) {
+            @media (max-width: 500px) {
                 margin-top:15px;
             }
-
             
         }
 
@@ -150,6 +148,16 @@ body {
             height: 50px;
         }
     }
+
+    .block__right--thankyou {
+        display: none; 
+        
+
+
+    }
+
+
+
 }
 
 
