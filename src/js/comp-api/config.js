@@ -60,11 +60,19 @@ const endpoints = {
             type : 'number'
         },
         {
-            label : 'Newsletter',
+            label : 'Yes, I consent to receive information on Suncorp Products.',
             name : 'newsletter',
             value : '',
             type : 'checkbox'
-        }
+        },
+        {
+            label : 'Yes, I am happy for Suncorp to use my above details for marketing and understand I can opt out at any time.',
+            name : 'optin',
+            value : '',
+            type : 'checkbox'
+        },
+
+
     ]
 }
 

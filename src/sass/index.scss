@@ -1,8 +1,387 @@
-html, body {
-    margin:0;
-    padding:0;
+html,
+body {
+    margin: 0;
+    padding: 0;
 }
 
 * {
-    box-sizing:border-box;
+    box-sizing: border-box;
+}
+
+.root {
+    margin: 0px auto;
+    width: 100%;
+    max-width: 1900px;
+    display: flex;
+
+    .side-panel,
+    .side-panel--left {
+        flex-grow: 1;
+        background: black;
+    }
+
+    .side-panel--left {
+        background-image: url('../img/rightPanel.jpg');
+        background-size: cover;
+    }
+
+    .comp-card {
+        position: relative;
+        display: flex;
+        width: 100%;
+        max-width: 1400px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        background: #fff;
+    }
+
+    .block__left {
+        position: relative;
+        width: 50%;
+        background: url('../img/leftPanel.jpg') no-repeat;
+        background-size: cover;
+        display: flex;
+
+        .block__left--heading h2 {
+            color: #fff;
+            font-family: 'Atlas Grotesk Bold';
+            font-size: 60px;
+            line-height: 60px;
+            font-weight: 700;
+        }
+
+        .block__left--subheading {
+            margin: 50px 0 0 0;
+        }
+
+        .block__left--subheading h4 {
+            color: #fff;
+            font-family: 'Atlas Grotesk Regular';
+            font-size: 22px;
+        }
+
+        img.logo.logo__left {
+            width: auto;
+            height: 20px;
+        }
+
+        .suncorp-sm {
+            display: none;
+        }
+
+        .block__left--button {
+            display: none;
+        }
+    }
+
+    .block__left--container,
+    .block__right--container,
+    .block__right--container-disclaimer {
+        margin: 65px 50px 0;
+    }
+
+    .logo-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .block__left--heading,
+    .block__right--heading {
+        margin: 55px 0 0 0;
+    }
+
+    .block__right {
+        width: 50%;
+        position: relative;
+        background: #eeeeee;
+
+        .block__right--container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .block__right--heading h4 {
+            color: #000;
+            font-family: 'Atlas Grotesk Bold';
+            font-size: 30px;
+            line-height: 30px;
+            font-weight: 700;
+        }
+
+        .block__right--subheading {
+            margin-bottom: 20px;
+        }
+
+        .block__right--subheading p {
+            font-size: 22px;
+            font-family: 'Atlas Grotesk Regular';
+            line-height: 30px;
+            font-weight: 500;
+        }
+
+        .block__right--form {
+            width: 100%;
+            height: auto;
+            background: #fff;
+        }
+
+        .block__right--disclaimer {
+            width: 100%;
+            background: #004346;
+        }
+
+        .block__right--container-disclaimer p {
+            color: #eeeeee;
+            font-family: 'Atlas Grotesk Regular';
+            font-size: 12px;
+            line-height: 16px;
+            padding: 20px 0;
+            margin: 0;
+        }
+
+        img.logo.logo__right {
+            height: 50px;
+        }
+    }
+}
+
+
+
+
+
+// media queries
+
+@media (min-width: 481px) and (max-width: 1100px) {
+
+    .root {
+        margin: 0px;
+
+        .comp-card {
+            flex-direction: column;
+
+            .block__left {
+                width: 100%;
+                height: auto;
+                background-position: 0% 30%;
+
+                .block__left--container {
+                    margin: 20px 30px;
+                    width: 100%;
+
+                    .logo-container {
+
+                        .suncorp-sm {
+                            display: block;
+                            width: auto;
+                            height: 40px;
+                        }
+                    }
+
+                    .block__left--heading {
+                        margin: 20px 0px;
+
+                        h2 {
+                            font-size: 34px;
+                            line-height: 38px;
+                            margin: 0px;
+                            max-width: 400px;
+                        }
+                    }
+
+                    .block__left--subheading {
+                        margin: 10px 0 20px;
+
+                        h4 {
+                            margin: 0px;
+                            font-size: 16px;
+                        }
+                    }
+
+                    .block__left--button {
+                        display: block;
+                        font-family: 'Atlas Grotesk Regular';
+                        color: #fff;
+                        padding: 10px 15px;
+                        background: #00928a;
+                        text-transform: uppercase;
+                        border-radius: 4px;
+                        width: 150px;
+                        text-align: center;
+                        margin: 10px 0;
+                        font-size: 12px;
+                        font-weight: 700;
+                    }
+                }
+            }
+
+            .block__right {
+                width: 100%;
+
+                .block__right--container {
+                    margin: 15px 20px;
+
+                    .logo-container img {
+                        display: none;
+                    }
+
+                    .block__right--heading {
+                        margin: 10px 0px;
+
+                        h4 {
+                            margin: 0px;
+                        }
+                    }
+
+                    .block__right--subheading {
+                        margin-bottom: 0px;
+                        max-width: 600px;
+
+                        p {
+                            font-size: 20px;
+                            line-height: 24px;
+                            margin: 20px 0;
+                        }
+                    }
+                }
+
+                .block__right--disclaimer {
+                    position: absolute;
+                }
+
+                .block__right--container-disclaimer {
+                    margin: 30px 25px;
+                }
+            }
+        }
+    }
+}
+
+
+
+// mobile
+
+@media (max-width: 480px) {
+
+    .root {
+        margin: 0px;
+
+        .comp-card {
+            flex-direction: column;
+
+            .block__left {
+                width: 100%;
+                height: 300px;
+
+                .block__left--container {
+                    margin: 15px 20px;
+                    width: 100%;
+
+                    .logo-container {
+
+                        .suncorp-sm {
+                            display: inline-block;
+                            width: auto;
+                            height: 30px;
+                        }
+                    }
+
+                    .block__left--heading {
+                        margin: 0px;
+
+                        h2 {
+                            font-size: 34px;
+                            line-height: 38px;
+                            margin: 0px;
+                            max-width: 300px;
+                        }
+                    }
+
+                    .block__left--subheading {
+                        margin: 10px 0 0 0;
+
+                        h4 {
+                            margin: 0px;
+                            font-size: 16px;
+                        }
+                    }
+
+                    .block__left--button {
+                        display: block;
+                        font-family: 'Atlas Grotesk Regular';
+                        color: #fff;
+                        padding: 10px 15px;
+                        background: #00928a;
+                        text-transform: uppercase;
+                        border-radius: 4px;
+                        width: 150px;
+                        text-align: center;
+                        margin-top: 10px;
+                        font-size: 12px;
+                        font-weight: 700;
+                    }
+                }
+            }
+
+            .block__right {
+                width: 100%;
+
+                .block__right--container {
+                    margin: 15px 20px;
+
+                    .logo-container img {
+                        display: none;
+                    }
+
+                    .block__right--heading {
+                        margin: 10px 0px -5px;
+
+                        h4 {
+                            margin: 0px;
+                        }
+                    }
+
+                    .block__right--subheading {
+                        margin-bottom: 0px;
+
+                        p {
+                            font-size: 20px;
+                            line-height: 24px;
+                            margin: 10px 0;
+                        }
+                    }
+                }
+
+                .block__right--container-disclaimer {
+                    margin: 25px 20px 0;
+                }
+            }
+        }
+    }
+}
+
+
+// small screen mobile 
+@media (max-width: 375px) {
+
+    .root {
+
+        .comp-card {
+
+            .block__right {
+
+                .block__right--container {
+                    margin: 0px;
+
+                    .block__right--heading,
+                    .block__right--subheading {
+                        margin: 10px 15px;
+                    }
+
+                }
+
+
+            }
+        }
+
+    }
+
 }

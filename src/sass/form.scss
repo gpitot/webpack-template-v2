@@ -4,29 +4,50 @@
     display: flex;
     flex-flow: row wrap;
 
+    .form-item {
+        width: 50%;
+        margin-bottom: 10px;
+    }
+
+    .form-item:nth-of-type(7),
+    .form-item:nth-of-type(8) {
+        width: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    .form-item:nth-of-type(7) {
+        // width: auto; also works
+        justify-content: flex-end;
+        margin-top: 20px;
+    }
+
+    .form-item:nth-of-type(8) {
+        margin-bottom: 20px;
+    }
+
     input {
         background: none;
         border: 0;
-        border-bottom: 1px solid #dedede;
-        width: 100%;
-        padding: 8px 0;
+        border-bottom: 1px solid #000;
+        width: 90%;
+        padding: 3px 0;
         font-size: 14px;
     }
 
-    input[type=text] {
-
+    input[type="checkbox"] {
+        width: auto;
     }
 
-
-    // input[type=number] {
-    //     margin: 10px 25px;
-    // }
-
-    input[type=submit] {}
-
-    // input, label {
-    //     display: block;
-    // }
+    input[type="submit"] {
+        text-transform: uppercase;
+        background: #00928a;
+        width: 35% !important;
+        border-radius: 4px;
+        color: #fff;
+        text-transform: uppercase;
+        padding: 8px 7px;
+    }
 
     input:focus,
     select:focus,
@@ -37,117 +58,56 @@
 
     label {
         font-family: Arial, Helvetica, sans-serif;
-        font-size: 12px; 
+        font-size: 12px;
     }
 
 }
 
-.root {
-    margin: 100px auto;
-    width: 1000px;
+// iPad
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .root {
+
+        .comp-form {
+
+            input {
+                width: 95%; 
+            }
+
+            .form-item:nth-of-type(7),
+            .form-item:nth-of-type(8) {
+                width: 70%;
+                display: flex;
+                flex-direction: row-reverse;
+            }
+
+            input[type="checkbox"] {
+                width: auto !important;
+            }
+
+        }
+
+    }
 }
 
-.comp-card {
-    position: relative;
-    display: flex;
-    max-width: 100%;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-    background: #fff;
+// Mobile
+@media (max-width: 480px) {
+
+    .root {
+
+        .comp-form {
+
+            .form-item {
+                width: 100%;
+
+                label {
+                    display: block;
+                }
+
+            }
+
+        }
+
+    }
 }
 
-.block__left {
-    position: relative;
-    width: 50%;
-    background: url(../img/background.png) no-repeat;
-    background-size: cover;
-    display: flex;
-}
-
-.block__left--container,
-.block__right--container,
-.block__right--container-disclaimer {
-    margin: 65px 50px 0;
-}
-
-.logo-container {
-    display: flex;
-    justify-content: space-between;
-}
-
-img.logo.logo__left {
-    width: auto;
-    height: 20px;
-}
-
-img.logo.logo__right {
-    height: 50px;
-}
-
-.block__left--heading,
-.block__right--heading {
-    margin: 55px 0 0 0;
-}
-
-.block__left--heading h2 {
-    color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 60px;
-    line-height: 60px;
-    font-weight: 700;
-}
-
-.block__left--subheading {
-    margin: 50px 0 0 0;
-}
-
-.block__left--subheading h4 {
-    color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 22px;
-}
-
-.block__right {
-    width: 50%;
-    position: relative;
-    background: #eeeeee;
-}
-
-.block__right--container {
-    display: flex;
-    flex-direction: column;
-    // overflow-y: scroll; 
-}
-
-.block__right--heading h4 {
-    color: #000;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 30px;
-    line-height: 30px;
-    font-weight: 700;
-}
-
-.block__right--subheading p {
-    font-size: 22px;
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 28px;
-    font-weight: 500;
-}
-
-.block__right--form {
-    width: 100%;
-    height: 300px;
-    background: #fff;
-}
-
-.block__right--disclaimer {
-    width: 100%;
-    background: #004346;
-}
-
-.block__right--container-disclaimer p {
-    color: #eeeeee;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    line-height: 16px;
-    padding: 20px 0;
-}
