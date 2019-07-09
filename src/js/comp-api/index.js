@@ -2,7 +2,8 @@ import submitEmail from '../formstack-email';
 
 import {
     phases, 
-    endpoints
+    endpoints,
+    form
 } from './config';
 import '../../sass/form.scss';
 
@@ -11,8 +12,22 @@ class CompApi {
 
     constructor(parent) {
         this.parent = parent;
+        this.form = form;
+    }
 
-        this.renderForm();
+
+    async getResults(phase, status=1, sortOrder='ASC', limit=100, offset=0) {
+        //https://stash.9msn.net/projects/COMPETITION/repos/competition-api/browse
+
+        const url = endpoints.entriesUrl + phase;
+        try {
+            const resp = await fetch(`${url}?status=${status}&sortOrder=${sortOrder}&limit=${limit}&offset=${offset}`);
+            const json = await resp.json();
+            return json;
+        } catch(err) {
+            console.warn(err);
+            return null;
+        }
     }
 
     showError = (error) => {
@@ -50,18 +65,8 @@ class CompApi {
         }
     }
 
-    validateFields = (data) => {
-        const arrData = Object.entries(data);
-
-        for (let i=0; i<arrData.length; i+=1) {
-            const [key, value] = arrData[i];
-            if (value.length < 1) {
-                return {
-                    success : false,
-                    message : `Please fill in ${key}`
-                };
-            }
-        }
+    validateFields = () => {
+        
         
         return {
             success : true,
@@ -69,17 +74,50 @@ class CompApi {
         };
     }
 
-    handleSubmit = (e, fields) => {
-        e.preventDefault();
+    convertToCorrectFormat = () => {
+        //convert this.form to data for api
+        const data = {
+            customFields : []
+        };
+        for (let [key, obj] of Object.entries(this.form)) {
+            if (key !== 'customFields') {
+                data[key] = obj.value;
+            } else {
 
-        const validation = this.validateFields(fields);
+                for (let i=0; i<obj.length; i+=1) {
+                    const {
+                        id,
+                        type,
+                        value
+                    } = obj[i];
+
+                    data.customFields.push({
+                        id,
+                        type,
+                        value 
+                    });
+                }
+                
+            } 
+        }
+
+        return data;
+    }
+
+    handleSubmit = e => {
+        e.preventDefault();
+        console.log(this.form);
+    
+        const validation = this.validateFields();
     
         if (validation.success) {
             const phase = this.getPhase();
             console.log(phase);
             if (phase.success) {
                 const url = endpoints.url + phase.phase.phase;
-                this.submitEntry(url, fields);
+
+                const data = this.convertToCorrectFormat();
+                this.submitEntry(url, data);
             } else {
                 //before comp opens
                 console.warn('no phase');
@@ -89,12 +127,11 @@ class CompApi {
             //validation error
             this.showError(validation.message);
         }
-        console.log(fields);
     }
 
     async submitEntry(url, data) {
+        
         console.log(data);
-        console.log(url);
         const config = {
             method:'POST',
             headers: {
@@ -102,31 +139,52 @@ class CompApi {
             },
             body : JSON.stringify(data)
         }
+        console.log(url);
         const resp = await fetch(url, config);
         const json = await resp.json();
         console.log(json);
         if (json.success) {
-            submitEmail({
-                email : data.email
-            });
+            // submitEmail({
+            //     email : data.email
+            // });
         } else {
-    
+            this.showError(json.message);
         }
         
         return json;
+    }
+
+
+    handleChange = e => {
+        let val;
+        if (e.target.type === 'checkbox') {
+            val = e.target.checked;
+        } else {
+            val = e.target.value;
+        }
+        if (this.form[e.target.name] === undefined) {
+            //custom field
+            for (let i=0; i<this.form.customFields.length; i+=1) {
+                const custom = this.form.customFields[i];
+                if (custom.name === e.target.name) {
+                    custom.value = val;
+                }
+            }
+        } else {
+            this.form[e.target.name].value = val;
+        }
     }
 
     renderForm = () => {
         const form = document.createElement('form');
         form.classList.add('comp-form');
     
-        const fields = {};
+        
 
-
-        const createInput = ({name, value, type}) => {
+        const createInput = ({name, value, inputType}) => {
             const input = document.createElement('input');
             input.name = name;
-            input.type = type;
+            input.type = inputType;
             input.value = value;
             return input;
         }
@@ -137,24 +195,48 @@ class CompApi {
             return labelEl;
         }
 
-        const createParent = ({label, name, value, type}) => {
+        const createParent = ({customClass, label, name, value, inputType}) => {
             const parent = document.createElement('div');
             parent.classList.add('form-item');
 
+            if (customClass) {
+                parent.classList.add(customClass);
+            }
+
             parent.appendChild(createLabel({label}));
-            parent.appendChild(createInput({name, value, type}));
+            parent.appendChild(createInput({name, value, inputType}));
             form.appendChild(parent);
         }
 
-    
-        endpoints.formConfig.forEach(({label, name, value, type}) => {
+        for (let [key, obj] of Object.entries(this.form)) {
+            if (key !== 'customFields') {
+                //standard key
+                const {
+                    label,
+                    value,
+                    inputType,
+                    customClass=null,
+                } = obj;
+                const name = key;
+                createParent({customClass, label, name, value, inputType});
 
+            } else {
+                for (let i=0; i<obj.length; i+=1) {
+                    //custom fields;
+                    const {
+                        label,
+                        value,
+                        inputType,
+                        customClass=null,
+                        name
+                    } = obj[i];
+                    createParent({customClass, label, name, value, inputType});
+                }
+            }
+        }
+        
 
-            createParent({label, name, value, type});
-    
-            fields[name] = value;
-        });
-    
+       
     
         //error message
         const error = document.createElement('div');
@@ -167,19 +249,9 @@ class CompApi {
         submit.value = "submit";
         form.appendChild(submit);
     
-        form.addEventListener('change', (e) => {
-            if (e.target.type === 'checkbox') {
-                fields[e.target.name] = e.target.checked;
-            } else {
-                fields[e.target.name] = e.target.value;
-            }
-            
-        });
-    
-        form.addEventListener('submit', (e) => {
-            this.handleSubmit(e, fields);
-        });
-    
+        form.addEventListener('change', this.handleChange);
+        form.addEventListener('submit', this.handleSubmit);
+        
         this.parent.appendChild(form);
     }
 }
