@@ -144,9 +144,9 @@ class CompApi {
         const json = await resp.json();
         console.log(json);
         if (json.success) {
-            // submitEmail({
-            //     email : data.email
-            // });
+            submitEmail({
+                email : data.email
+            });
         } else {
             this.showError(json.message);
         }
