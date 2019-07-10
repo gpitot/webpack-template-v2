@@ -17,6 +17,7 @@ function submitEmail(fields) {
     
     
     const form = document.createElement('form');
+    form.style.display = "none";
     form.action = FORMSTACKURL;
     form.method = "post";
     form.enctype = "multipart/form-data";
