@@ -13,10 +13,10 @@ function checkStatus() {
     }
     const urlParams = new URLSearchParams(window.location.search);
     const state = urlParams.get('state');
+    const thankYouPage = document.querySelector('.block__right--thankyou');
+    const blockRight = document.querySelector('.block__right');
     if (state === 'submitted') {
-        const thankYouPage = document.querySelector('.block__right--thankyou');
         thankYouPage.style.display = 'block';
-        const blockRight = document.querySelector('.block__right');
         blockRight.style.display = 'none';
     } else {
         thankYouPage.style.display = 'none';
