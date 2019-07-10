@@ -2,6 +2,7 @@ html,
 body {
     margin: 0;
     padding: 0;
+    background: black;
 }
 
 * {
@@ -367,7 +368,7 @@ body {
                 }
 
                 .block__right--container-disclaimer {
-                    margin: 25px 20px 0;
+                    margin: 0 20px;
                 }
             }
         }
