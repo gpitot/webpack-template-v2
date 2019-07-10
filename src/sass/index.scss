@@ -90,7 +90,7 @@ body {
         margin: 55px 0 0 0;
     }
 
-    .block__right, .block__right--thankyou {
+    .block__right  {
         width: 50%;
         position: relative;
         background: #eeeeee;
@@ -149,20 +149,20 @@ body {
         }
     }
 
-    .block__right--thankyou {
+    .block__right--thankyou, 
+    .block__right--closed {
         display: none; 
         
+        .block__right--heading {
+            h4 {
+                font-family: 'Atlas Grotesk Regular';
+            }
+        }
 
+       
 
     }
-
-
-
 }
-
-
-
-
 
 // media queries
 
