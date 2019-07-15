@@ -5,6 +5,12 @@ import {
     endpoints,
     form
 } from './config';
+
+import {
+    setCookies,
+    readCookie
+} from '../utils';
+
 import '../../sass/form.scss';
 
 
@@ -104,10 +110,10 @@ class CompApi {
         return data;
     }
 
-    handleSubmit = e => {
-        e.preventDefault();
-        console.log(this.form);
-    
+    handleSubmit = token => {
+        //e.preventDefault();
+        this.form.googleToken.value = token;
+        
         const validation = this.validateFields();
     
         if (validation.success) {
@@ -130,7 +136,6 @@ class CompApi {
     }
 
     async submitEntry(url, data) {
-        
         console.log(data);
         const config = {
             method:'POST',
@@ -140,14 +145,26 @@ class CompApi {
             body : JSON.stringify(data)
         }
         console.log(url);
+        
+        
+        
+        
         const resp = await fetch(url, config);
         const json = await resp.json();
         console.log(json);
         if (json.success) {
-            submitEmail({
-                email : data.email
-            });
+
+            //set up cookies for on submission message based on form data
+            // setCookies([
+            //     ['optin' , true,],
+            //     ['name' , 'name',]
+            // ])
+
+            // submitEmail({
+            //     email : data.email
+            // });
         } else {
+            grecaptcha.reset();
             this.showError(json.message);
         }
         
@@ -181,30 +198,38 @@ class CompApi {
     
         
 
-        const createInput = ({name, value, inputType}) => {
+        const createInput = ({parent, name, value, inputType}) => {
+            if (!inputType) return;
             const input = document.createElement('input');
             input.name = name;
             input.type = inputType;
             input.value = value;
-            return input;
+            parent.appendChild(input);
         }
 
-        const createLabel = ({label}) => {
+        const createLabel = ({parent, label}) => {
+            if (!label) return;
             const labelEl = document.createElement('label');
             labelEl.innerText = label;
-            return labelEl;
+            parent.appendChild(labelEl);
         }
 
-        const createParent = ({customClass, label, name, value, inputType}) => {
+        const createParent = ({customClass, label=null, name, value, inputType=null}) => {
             const parent = document.createElement('div');
-            parent.classList.add('form-item');
+
+            if (inputType !== 'hidden') {
+                parent.classList.add('form-item');
+            }
+            
 
             if (customClass) {
                 parent.classList.add(customClass);
             }
+           
+            createLabel({parent, label});
+            createInput({parent, name, value, inputType});
 
-            parent.appendChild(createLabel({label}));
-            parent.appendChild(createInput({name, value, inputType}));
+            
             form.appendChild(parent);
         }
 
@@ -243,12 +268,18 @@ class CompApi {
         error.classList.add('error');
         form.appendChild(error);
     
-        //submit btn
+       
         const submit = document.createElement('input');
         submit.type = "submit";
         submit.value = "submit";
+        submit.classList.add('g-recaptcha');
+        submit.setAttribute('data-sitekey', endpoints.google_site_key);
+        submit.setAttribute('data-callback', 'onSubmit');
+       
         form.appendChild(submit);
-    
+
+        window.handleSubmit = this.handleSubmit;
+
         form.addEventListener('change', this.handleChange);
         form.addEventListener('submit', this.handleSubmit);
         
