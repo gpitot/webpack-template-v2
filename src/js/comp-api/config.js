@@ -1,12 +1,12 @@
 const weekInSeconds = 7 * 24 * 60 * 60 * 1000;
 
-const startComp = new Date('07/01/2019');//current
+const startComp = new Date('07/15/2019');//current
 const startCompTime = startComp.getTime();
 
 const phases = [
     {
         startDate : new Date(startCompTime), 
-        phase : 39
+        phase : 38
     },
     {
         startDate : new Date(startCompTime + (weekInSeconds * 1)), 
@@ -19,12 +19,18 @@ const phases = [
 ];
 
 const endpoints = {
-    url : 'https://staging.competition.nine.com.au/enter-phase/',
+    url : 'https://uat.competition.nine.com.au/enter-phase/',
     entriesUrl: 'https://staging.competition.nine.com.au/entries/',
+    google_site_key : '6LcmPUAUAAAAAMjQoABDjyGQkH46afELBYthy7VH'
 }
 
 
 const form = {
+    googleToken : {
+        value : '',
+        inputType : 'hidden',
+        customClass : 'g-form',
+    },
     firstName : {
         label : 'First name',
         value : '',
@@ -53,16 +59,17 @@ const form = {
     postcode : {
         label : 'Postcode',
         value : '',
-        inputType : 'number'
+        inputType : 'number', 
     },
     newsletter : {
         label : 'Yes, I consent to receive information on Suncorp Products.',
         value : '',
-        inputType : 'checkbox'
+        inputType : 'checkbox',
+        customClass : 'optin-row',
     },
     customFields : [
         {
-            id :87,
+            id :76,
             type : 'bool',
             label : 'Yes, I am happy for Suncorp to use my above details for marketing and understand I can opt out at any time.',
             name : 'optin',
