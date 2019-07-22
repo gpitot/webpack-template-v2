@@ -8,14 +8,13 @@ import datetime
 
 
 date = datetime.datetime.now()
-TEMPLATE = 'https://stash.9msn.net/scm/cs/chandon.git'
+TEMPLATE = 'https://stash.9msn.net/scm/psa/easy-website.git'
 
 if 'dist' not in os.listdir():
     print('NOT IN DIRECTORY')
     #git needs to be added
     os.system('echo adding git to dist folder')
     
-    branch = input('BRANCH : ')
     os.system(f'git clone {TEMPLATE} --branch dist dist')
     
     remote = input('BRANCH REMOTE URL : ')
