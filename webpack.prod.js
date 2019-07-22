@@ -28,6 +28,7 @@ module.exports = merge(common, {
     ],
   },
   output : {
+    path : __dirname + '/dist/src',
     filename : '[name].[hash].js'
 },
 });
