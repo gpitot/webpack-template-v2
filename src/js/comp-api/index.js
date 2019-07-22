@@ -111,7 +111,6 @@ class CompApi {
     }
 
     handleSubmit = token => {
-        //e.preventDefault();
         this.form.googleToken.value = token;
         
         const validation = this.validateFields();

@@ -72,7 +72,55 @@
                         </p>
                     </div>
                     <div class="block__right--form">
-                        <div id="parent"></div>
+                        <div id="parent">
+
+                            <form class="comp-form">
+                                <div class="g-form">
+                                    <input name="googleToken" type="hidden" value="">
+                                </div>
+                                <div class="form-item">
+                                    <label>First name</label>
+                                    <input name="firstName" type="text">
+                                </div>
+                                <div class="form-item">
+                                    <label>Last name</label>
+                                    <input name="lastName" type="text">
+                                </div>
+                                <div class="form-item">
+                                    <label>Email</label>
+                                    <input name="email" type="text">
+                                </div>
+                                <div class="form-item">
+                                    <label>Phone Number</label>
+                                    <input name="phone" type="number">
+                                </div>
+                                <div class="form-item">
+                                    <label>State</label>
+                                    <input name="state" type="text">
+                                </div>
+                                <div class="form-item">
+                                    <label>Postcode</label>
+                                    <input name="postcode" type="number">
+                                </div>
+                                <div class="form-item optin-row">
+                                    <label>Yes, I consent to receive information on Suncorp Products.</label>
+                                    <input name="newsletter" type="checkbox" value="">
+                                </div>
+                                <div class="form-item optin-row">
+                                    <label>Yes, I am happy for Suncorp to use my above details for marketing and understand I can opt out at any time.</label>
+                                    <input name="optin" type="checkbox" value="">
+                                </div>
+                                <div class="error"></div>
+
+                                <input 
+                                    type="submit" 
+                                    value="Submit" 
+                                    class="g-recaptcha"
+                                    data-sitekey="6LcmPUAUAAAAAMjQoABDjyGQkH46afELBYthy7VH"
+                                    data-callback="onSubmit" >
+                            </form>
+
+                        </div>
                     </div>
                     <!-- .block__right--container -->
                 </div>
@@ -140,8 +188,8 @@
 
     <script>
     function onSubmit(token) {
-        console.log(token);
-        window.handleSubmit(token);
+        window.updateGoogleToken(token);
+        window.submitCompForm();
     }
     </script>
 
