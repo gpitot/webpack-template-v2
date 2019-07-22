@@ -1,14 +1,14 @@
-#INSTALLATION
-1. nvm use
-2. npm i
+# INSTALLATION
+* nvm use
+* npm i
 
 
 
-#RUNNING 
-1. npm start
+# RUNNING 
+* npm start
 
 
 
-#DEPLOYMENT
-1. npm run deploy
-2. when prompted add in remote url of repository
+# DEPLOYMENT
+* npm run deploy
+* when prompted add in remote url of repository
