@@ -1,0 +1,18 @@
+#!/bin/bash
+
+TEMPLATE="https://stash.9msn.net/scm/psa/easy-website.git"
+# Get todays date
+NOW=$(date +"%d-%m-%Y")
+echo $NOW
+if [ ! -d "dist" ]; then
+    git clone $TEMPLATE --branch dist dist
+    echo NO DIST EXISTS
+    echo Please enter a remote repository
+    read REMOTE
+    cd dist && git remote set-url origin $REMOTE
+    cd ..
+fi
+
+npx webpack --config webpack.prod.js
+cd dist && git add . && git commit -m "Released at $NOW" && git push origin head
+exit 0

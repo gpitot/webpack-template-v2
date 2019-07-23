@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "python3 production.py",
+    "deploy": "bash deploy",
     "start": "webpack-dev-server --open --config webpack.dev.js"
   },
   "keywords": [],
