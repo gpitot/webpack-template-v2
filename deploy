@@ -14,5 +14,5 @@ if [ ! -d "dist" ]; then
 fi
 
 npx webpack --config webpack.prod.js
-cd dist && git add . && git commit -m "Released at $NOW" && git push origin head
+cd dist && git add . && git commit -m "Released at $NOW" && git push --force origin head
 exit 0
