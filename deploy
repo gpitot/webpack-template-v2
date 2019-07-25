@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TEMPLATE="https://stash.9msn.net/scm/psa/easy-website.git"
+TEMPLATE="https://stash.9msn.net/scm/psw/000-easy-website-template.git"
 # Get todays date
 NOW=$(date +"%d-%m-%Y")
 echo $NOW
