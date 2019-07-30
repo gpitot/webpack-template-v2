@@ -35,9 +35,11 @@
 * go to parameters on left
 * change appropriate
 * go to build home
-* click preprod
+* click preprod (DONT RUN YET!)
 * go to parameters
 * change deploy_strat to 'deploy:bluegreen' (no quotes)
+* run build
+* contact dev ops about setting up DNS
 * run staging and preprod
 * once successfully complete rename preprod deploy_strat to deploy:newUniqueEnvironment
 * promote prod
