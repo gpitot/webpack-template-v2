@@ -39,8 +39,9 @@
 * go to parameters
 * change deploy_strat to 'deploy:bluegreen' (no quotes)
 * run build
-* contact dev ops about setting up DNS
 * run staging and preprod
 * once successfully complete rename preprod deploy_strat to deploy:newUniqueEnvironment
 * promote prod
 * delete old prod (optional)
+* get preview link from beanstalk page 
+* contact dev ops about setting up DNS
