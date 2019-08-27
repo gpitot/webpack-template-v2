@@ -5,7 +5,7 @@ KEY_DIR = keys
 NODE_VERSION= 10.13.0
 REGISTRY = docker-registry.mi9cdn.com:5000
 APP_IMAGE = $(REGISTRY)/$(PROJECT)/$(PROJECT):$(VERSION)
-BUILD_IMAGE = $(REGISTRY)/nec-network/network-ci/alpine-node:$(NODE_VERSION)
+BUILD_IMAGE = $(REGISTRY)/nec-network/alpine-node:$(NODE_VERSION)
 
 
 clean:
