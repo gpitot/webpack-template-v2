@@ -2,10 +2,10 @@ TASK_RUNNER = ./node_modules/.bin/webpack
 OUT_DIR = temp
 BUILD_DIR = build
 KEY_DIR = keys
-NODE_VERSION= 10.16.3
+NODE_VERSION= 10.13.0
 REGISTRY = docker-registry.mi9cdn.com:5000
 APP_IMAGE = $(REGISTRY)/$(PROJECT)/$(PROJECT):$(VERSION)
-BUILD_IMAGE = $(REGISTRY)/nec-network/network-ci:$(NODE_VERSION)
+BUILD_IMAGE = $(REGISTRY)/nec-network/network-ci/alpine-node:$(NODE_VERSION)
 
 
 clean:
