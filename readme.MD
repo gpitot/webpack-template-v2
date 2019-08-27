@@ -10,8 +10,7 @@
 
 
 ## DEPLOYMENT
-* npm run deploy
-* when prompted add in remote url of repository
+* push to master
 
 
 
