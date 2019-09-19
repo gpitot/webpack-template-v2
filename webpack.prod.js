@@ -5,6 +5,7 @@ const TerserJSPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const path = require('path');
 
 module.exports = merge(common, {
   mode: 'production',
@@ -28,7 +29,7 @@ module.exports = merge(common, {
     ],
   },
   output : {
-    path : __dirname + '/dist',
+    path : path.resolve(__dirname ,'./dist'),
     filename : '[name].[hash].js'
 },
 });
