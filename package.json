@@ -15,8 +15,8 @@
     }
   },
   "lint-staged": {
-    "*.js": "npx eslint ./src --fix",
-    "*.html, *.scss, *.css, *.js, *.json": [
+    "*.js": "npx eslint --fix",
+    "*.{html,scss,css,js,json}": [
       "prettier --write",
       "git add"
     ]
