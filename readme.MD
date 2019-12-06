@@ -40,6 +40,7 @@
 * run build
 * run staging and preprod
 * once successfully complete rename preprod deploy_strat to deploy:newUniqueEnvironment
+* run preprod again!
 * promote prod
 * delete old prod (optional)
 * get preview link from beanstalk page 
