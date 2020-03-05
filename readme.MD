@@ -45,3 +45,8 @@
 * delete old prod (optional)
 * get preview link from beanstalk page 
 * contact dev ops about setting up DNS
+
+
+
+### ask ops team for url
+![see how here](./deploy.png)
