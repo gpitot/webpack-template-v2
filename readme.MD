@@ -24,6 +24,7 @@
 
 
 #### create CI pipeline
+* go to http://ci.9msn.net/
 * go to latest project we have made
 * edit project settings
 * actions - copy
@@ -32,19 +33,26 @@
 
 #### edit CI pipeline
 * go to parameters on left
-* change appropriate
-* go to build home
+* edit PROJECT_NAME to same name as your config deployment folder
+* edit REPO_NAME to same name as your stash repo
+* note REPO_PATH is the alias of your repo folder like psw for powered-studios-website
+* go to Project Home top right
 * click preprod (DONT RUN YET!)
-* go to parameters
+* go to edit configuration settings then parameters
 * change deploy_strat to 'deploy:bluegreen' (no quotes)
 * run build
 * run staging and preprod
 * once successfully complete rename preprod deploy_strat to deploy:newUniqueEnvironment
 * run preprod again!
-* promote prod
+* run promote prod
 * delete old prod (optional)
+
+#### AWS
+
+* go to AWS https://ninestudios.awsapps.com/console/#login:redirect_to=awsconsole
+* search for elastic beanstalk
 * get preview link from beanstalk page 
-* contact dev ops about setting up DNS
+* contact dev ops about setting up url 
 
 
 
